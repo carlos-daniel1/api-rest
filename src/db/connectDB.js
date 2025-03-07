@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const URI = 'mongodb://localhost:27017/to-do-list';
+const URI = 'mongodb://localhost:27017/casaHorti';
 
 async function connectMongoDB() {
     try {
