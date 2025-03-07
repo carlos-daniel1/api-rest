@@ -3,7 +3,7 @@ import tokenService from 'jsonwebtoken';
 const mid = (req, res, next) => {
     const noAuthPaths = ["/api/user/login", "/About"];
     
-    if (noAuthPaths.includes(req.path) || (req.path === '/api/user/' && req.method === 'POST')) {
+    if (noAuthPaths.includes(req.path) || (req.path === '/api/user' && req.method === 'POST')) {
         return next();
     }
 
