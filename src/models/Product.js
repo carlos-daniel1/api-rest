@@ -30,6 +30,7 @@ const productSchema = new Schema({
         type: Number,
         required: false
     },
+    carts: [{ type: mongoose.Schema.Types.ObjectId, ref: "Cart" }]
 })
 
 productSchema.plugin(incrementID, { inc_field: "productID" });

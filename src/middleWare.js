@@ -1,9 +1,9 @@
 import tokenService from 'jsonwebtoken';
 
 const mid = (req, res, next) => {
-    const noAuthPaths = ["/api/user/login", "/About"];
+    const noAuthPaths = ["/api/user/login", "/api/user"];
     
-    if (noAuthPaths.includes(req.path) || (req.path === '/api/user' && req.method === 'POST')) {
+    if (noAuthPaths.includes(req.path) && req.method === 'POST') {
         return next();
     }
 

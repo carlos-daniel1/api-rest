@@ -6,14 +6,14 @@ import tokenService from 'jsonwebtoken'
 const userController = {
     findAll: async (req, res) => {
         try {
-            const result = await userModel.find({});
+            const result = await userModel.find({}).select("-password");
             res.json(result);
 
         } catch (error) {
             console.log(error);
             res.status(500).json({ msg: "Erro no servidor." })
         }
-        
+
     },
 
 
@@ -21,8 +21,8 @@ const userController = {
 
         try {
             const id = req.params.id;
-            const result = await userModel.findOne({ userID: id });
-            const{__v, __id, ...json}= result.toObject()
+            const result = await userModel.findOne({ userID: id }).select("-password");
+            //const { __v, __id, ...json } = result.toObject()
 
             if (!result) {
                 return res.status(404).json({ msg: "Usuario não encontrado." });
@@ -60,19 +60,19 @@ const userController = {
             return res.status(400).json({ msg: `O email já está em uso` });
         }
 
-        try{
-            const {password, ...json} = req.body
+        try {
+            const { password, ...json } = req.body
             const hashPassword = await passwordService.hash(password, Number(process.env.SALT_ROUNDS))
             json.password = hashPassword;
 
-            const result= await userModel.create(json)
-            if(!result){
-                throw new Exception ("Erro ao criar usuário")
+            const result = await userModel.create(json)
+            if (!result) {
+                throw new Exception("Erro ao criar usuário")
             }
             delete json.password
             res.status(201).json({ message: "Usuário criado com sucesso", data: json });
         }
-        catch (error){
+        catch (error) {
             if (error.code === 11000) {
                 return res.status(400).json({ msg: 'O CPF já está em uso' });
             }
@@ -100,25 +100,25 @@ const userController = {
         try {
             const id = req.params.id;
 
-            const {password, ...json} = req.body
+            const { password, ...json } = req.body
             const hashPassword = await passwordService.hash(password, Number(process.env.SALT_ROUNDS))
             json.password = hashPassword;
 
             const updateUser = await userModel.findOneAndUpdate({ userID: id }, json);
-    
+
             if (!updateUser) {
                 return res.status(404).json({ msg: "Usuário não encontrado" });
             }
-            
+
             delete json.password
             return res.status(201).json({ message: "Usuário atualizado com sucesso", data: json });
-    
-    
+
+
         } catch (error) {
             console.log(error);
             res.status(500).json({ msg: "Erro no servidor." });
         }
-        },
+    },
 
     delete: async (req, res) => {
         try {
@@ -137,22 +137,25 @@ const userController = {
             res.status(500).json({ msg: "Erro no servidor." })
         }
     },
-    login: async(req, res) =>{
+    login: async (req, res) => {
         try {
-            const hash = await passwordService.hash(req.body.password, Number(process.env.SALT_ROUNDS))
-            const user = await userModel.findOne({email: req.body.email});
-            const isMatch = await passwordService.compare(user.password, hash)
-            if (!isMatch) {
-            const{__v, _id, ...json}= user.toObject()
-            const token = await tokenService.sign(json, process.env.SECRET)
-            
-            return res.status(200).json({message:"Usuario encontrado com sucesso", token: token})
-            
+            const user = await userModel.findOne({ email: req.body.email });
+
+            if (!user) {
+                return res.status(404).json({ message: "Usuário não encontrado" });
             }
-            res.status(404).json({message:"Usuario não encontrado"})
-            
-    }catch (err) {
-            res.status(401).json({ message: err.message })
+            const isMatch = await passwordService.compare(req.body.password, user.password);
+
+            if (!isMatch) {
+                return res.status(401).json({ message: "Credenciais inválidas" });
+            }
+            const { __v, _id, ...json } = user.toObject()
+            const token = tokenService.sign(json, process.env.SECRET)
+
+            return res.status(200).json({ message: "Usuario encontrado com sucesso", token: token })
+
+        } catch (err) {
+            res.status(500).json({ message: "Erro no servidor!" })
         }
     }
 }

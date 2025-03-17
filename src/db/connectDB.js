@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 
-const URI = 'mongodb://localhost:27017/casaHorti';
+const URI = 'mongodb://localhost:27017/api-rest';
 
-async function connectMongoDB() {
+async function connectDB() {
     try {
         await mongoose.connect(URI, {});
           console.log('Conexão com MongoDB foi feita com sucesso');
@@ -13,4 +13,4 @@ async function connectMongoDB() {
     }
 }
 
-export default connectMongoDB;
+export default connectDB;

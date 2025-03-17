@@ -1,12 +1,10 @@
 import express from "express";
 const router = express.Router();
-import productController from '../controller/productController.js'
-
+import productController from '../controllers/productController.js'
 
 router.route('/')
 .get(productController.findAll)
 .post(productController.insertOne)
-
 
 
 router.route('/:id')

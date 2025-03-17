@@ -1,12 +1,9 @@
 import express from "express";
 const router = express.Router();
-import userController from '../controller/userController.js'
-
+import userController from '../controllers/userController.js'
 
 router.route('/login')
 .post(userController.login)
-
-
 
 router.route('/')
 .get(userController.findAll)
