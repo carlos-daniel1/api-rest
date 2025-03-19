@@ -1,4 +1,5 @@
 import userModel from '../models/User.js'
+import Cart from '../models/Cart.js'
 import passwordService from 'bcrypt'
 import tokenService from 'jsonwebtoken'
 
@@ -6,7 +7,7 @@ import tokenService from 'jsonwebtoken'
 const userController = {
     findAll: async (req, res) => {
         try {
-            const result = await userModel.find({}).select("-password");
+            const result = await userModel.find({}).select("-password -__v").populate("cart");
             res.json(result);
 
         } catch (error) {
@@ -65,10 +66,12 @@ const userController = {
             const hashPassword = await passwordService.hash(password, Number(process.env.SALT_ROUNDS))
             json.password = hashPassword;
 
+            const createCart = await Cart.create({ products: [] });
+
+            json.cart = createCart._id;
+            
             const result = await userModel.create(json)
-            if (!result) {
-                throw new Exception("Erro ao criar usuário")
-            }
+
             delete json.password
             res.status(201).json({ message: "Usuário criado com sucesso", data: json });
         }
@@ -130,6 +133,8 @@ const userController = {
                 return res.status(404).json({ msg: "Usuario não encontrado." });
             }
 
+            const deleteCart = await Cart.findByIdAndDelete({ _id: deleteUser.cart });
+            console.log(deleteCart)
             res.status(200).json({ msg: "Usuario deletado com sucesso" });
 
         } catch (error) {

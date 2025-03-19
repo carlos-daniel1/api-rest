@@ -37,7 +37,8 @@ const userSchema = new Schema({
         required: true,
         trim: true
     },
-    cart: { type: mongoose.Schema.Types.ObjectId, ref: "Cart"}
+    cart: { type: mongoose.Schema.Types.ObjectId, ref: "Cart" },
+    purchase: [{ type: mongoose.Schema.Types.ObjectId, ref: "Purchase" }]
 });
 
 userSchema.plugin(incrementID, { inc_field: "userID" });

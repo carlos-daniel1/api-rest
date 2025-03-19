@@ -7,6 +7,6 @@ const purchaseSchema = new Schema({
 })
 
 
-const Purchase = mongoose.model("Cart", purchaseSchema)
+const Purchase = mongoose.model("Purchase", purchaseSchema)
 
 export default Purchase;

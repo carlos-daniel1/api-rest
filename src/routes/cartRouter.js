@@ -1,14 +1,13 @@
 import express from "express";
-import cartController from "../controllers/cartController";
+import cartController from "../controllers/cartController.js";
 const router = express.Router();
 
 router.route('/')
 .get(cartController.findAll)
-.post(cartController.insert)
 
 router.route('/:id')
 .get(cartController.findOne)
 .put(cartController.update)
-.delete(cartController.delete)
+
 
 export default router;

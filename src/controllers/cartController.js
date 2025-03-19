@@ -1,4 +1,5 @@
-import Cart from "../models/Cart";
+import Cart from "../models/Cart.js";
+import Product from "../models/Product.js";
 
 const cartController = {
     findAll: async (req, res) => {
@@ -29,41 +30,36 @@ const cartController = {
         }
     },
 
-    insert: async (req, res) => {
-        const { userID, products } = req.body
+    update: async (req, res) => {
+        const id = req.params.id;
+        const { products } = req.body;
 
-        if (!Array.isArray(products)) {
-            res.status(404).json({ message: "Você precisa passar um array de products" })
+        if (!products) {
+            return res.status(400).json({ message: "O campo products é obrigatório" });
         }
 
-        if (!userID || !products) {
-            res.status(404).json({ message: "Os campos userID e products são obrigatórios" })
+        if (!Array.isArray(products)) {
+            return res.status(400).json({ message: "Você precisa passar um array de products" });
         }
 
         try {
-            const newCart = {
-                userID,
-                products
-            }
+            const updateCart = await Cart.findOneAndUpdate({ _id: id }, { products: products }, { new: true });
 
-            await Cart.create(newCart);
-            res.status(201).json({ response, msg: "Carrinho criado com sucesso" })
+            const addProductAtCart = products.map(productId =>
+                Product.findByIdAndUpdate(
+                    productId,
+                    { $addToSet: { carts: id } }
+                )
+            );
+            await Promise.all(addProductAtCart);
+
+            res.status(200).json({ message: "Carrinho atualizado com sucesso!", updateCart });
 
         } catch (error) {
-            console.error(error)
-            res.status(500).json({ message: "Erro no servidor!" })
+            console.error(error);
+            res.status(500).json({ message: "Erro no servidor!" });
         }
-
-
-    },
-
-    delete: async (req, res) => {
-
-    },
-
-    update: async (req, res) => {
-
-    },
+    }
 
 
 }

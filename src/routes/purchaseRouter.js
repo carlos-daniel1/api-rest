@@ -1,5 +1,5 @@
 import express from "express";
-import purchaseController from "../controllers/purchaseController";
+import purchaseController from "../controllers/purchaseController.js";
 const router = express.Router();
 
 router.route('/')
@@ -8,7 +8,6 @@ router.route('/')
 
 router.route('/:id')
 .get(purchaseController.getOne)
-.put(purchaseController.update)
-.delete(purchaseController.delete)
+
 
 export default router;
