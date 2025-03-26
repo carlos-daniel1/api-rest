@@ -5,8 +5,8 @@ import AddTask from './components/AddTask'
 
 const App = () => {
   return (
-    <div>
-      <h1 className='text-red-100 m-1'>Gerenciador de tarefas</h1>
+    <div className='bg-[rgb(56,56,61)] h-screen'>
+      <h1 className='text-red-100'>Home</h1>
       <AddTask />
       <Tasks />
     </div>
