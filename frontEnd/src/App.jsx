@@ -1,16 +1,18 @@
-import React, { useState } from 'react'
-import Tasks from './components/Tasks'
-import AddTask from './components/AddTask'
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from './pages/Home'; 
+import Login from './pages/Login'; 
+import Register from './pages/Register';
 
 const App = () => {
   return (
-    <div className='bg-[rgb(56,56,61)] h-screen'>
-      <h1 className='text-red-100'>Home</h1>
-      <AddTask />
-      <Tasks />
-    </div>
-  )
-}
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />   
+      </Routes>
+    </Router>
+  );
+};
 
-export default App
+export default App;
