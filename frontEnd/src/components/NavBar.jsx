@@ -3,8 +3,8 @@ import { Coffee, ShoppingCart } from "lucide-react";
 const Navbar = () => {
   return (
     <nav className="bg-[#242424] text-white py-4 px-6 flex justify-between items-center shadow-lg">
-      <div className="text-2xl font-bold">
-        <span className="text-amber-500">Coffee</span>Script
+      <div className="text-2xl font-bold cursor-default">
+        <span className="text-amber-500 ">Coffee</span>Script
       </div>
 
       {/* carrinho */}
