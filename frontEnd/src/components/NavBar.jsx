@@ -6,6 +6,9 @@ const Navbar = () => {
       <div className="text-2xl font-bold cursor-default">
         <span className="text-amber-500 ">Coffee</span>Script
       </div>
+      
+      
+
 
       {/* carrinho */}
       <button className="relative">
