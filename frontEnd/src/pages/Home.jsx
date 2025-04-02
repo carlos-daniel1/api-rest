@@ -7,29 +7,43 @@ import httpservice from '../services/httpServices';
 
 const Home = () => {
     const [openModal, setOpenModal] = useState(false);
-    const [coffees, setCoffees] = useState([
-        { id: 1, name: 'American Coffee', price: 5.00, image: 'src/assets/coffee1.webp' },
-        { id: 2, name: 'Coffee Latte', price: 6.50, image: 'src/assets/coffee2.webp' },
-        { id: 3, name: 'Cappuccino', price: 7.00, image: 'src/assets/coffee3.webp' },
-        { id: 4, name: 'Expresso', price: 4.50, image: 'src/assets/coffee4.webp' },
-        { id: 5, name: 'Macchiato', price: 6.00, image: 'src/assets/coffee5.webp' },
-    ]);
+    const [coffees, setCoffees] = useState([]);
 
 
     useEffect(() => {
         const getCoffees = async () => {
-            try{
+            try {
                 const response = await httpservice.getProducts();
                 const data = await response.json()
-                
-
-            } catch(err) {
+                setCoffees(data)
+            } catch (err) {
                 console.log(err);
             }
         }
 
         getCoffees();
     }, []);
+
+
+    const addCoffee = async (name, price) => {
+        const randomNumber = Math.floor(Math.random() * 5) + 1;
+        const image = `src/assets/coffee${randomNumber}.webp`
+
+        const newCoffe = { name, price, image: image }
+
+        try {
+            const response = await httpservice.createProduct(newCoffe);
+            const data = await response.json()
+            console.log(data.response)
+            setCoffees([...coffees, data.response])
+            alert(data.msg)
+
+        } catch (err) {
+            alert('Erro ao adicionar o produto!')
+            console.log(err);
+        }
+        setOpenModal(false);
+    }
 
 
     return (
@@ -43,18 +57,13 @@ const Home = () => {
                 +
             </button>
 
-            <Modal isOpen={openModal} closeModal={() => setOpenModal(false)}>
-                <div className='flex flex-col gap-4 mt-5'>
-                    <h2 className='text-center text-white text-2xl font-bold'>Adicionar Café</h2>
-                    <input type="text" placeholder='Nome do café' className='p-2 rounded-lg text-white' />
-                    <input type="number" placeholder='Preço do café' className='p-2 rounded-lg text-white' />
+            <Modal isOpen={openModal} closeModal={() => setOpenModal(false)} addCoffee={addCoffee} />
 
-                    <button className='bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded-lg shadow-lg transition-colors duration-300 cursor-pointer'>Adicionar</button>
-                </div>
-            </Modal >
         </div>
 
     )
 }
+
+
 
 export default Home
