@@ -36,7 +36,7 @@ const productController = {
             return !field || field.toString().trim() === '';
         };
 
-        const requiredFields = ['name', 'image', 'price', 'description', 'discounted'];
+        const requiredFields = ['name', 'image', 'price'];
         const missingFields = requiredFields.filter(field => isFieldInvalid(req.body[field]));
 
 
@@ -53,8 +53,8 @@ const productController = {
             name: req.body.name,
             image: req.body.image,
             price: req.body.price,
-            description: req.body.description,
-            discounted: req.body.discounted
+            description: `${req.body.name} is a great product`,
+            discounted: 0
         }
 
         try {

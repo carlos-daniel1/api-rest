@@ -9,10 +9,11 @@ const CoffeePage = () => {
     return (
         <div className='bg-[rgb(56,56,61)] h-screen'>
             <Navbar />
-            <div className='mt-30 flex flex-col items-center bg-amber-600 p-8 rounded-lg shadow-lg w-1/3 mx-auto'>
-                <h1 className='text-lg text-white'>{coffee.name}</h1>
-                <p className='text-lg mt-4 text-white'>Price: R${coffee.price}</p>
-                <p className='text-lg mt-2'>Description: {coffee.description || 'No description available'}</p>
+            <div className='mt-10 flex flex-col items-center bg-amber-600 py-4 rounded-lg shadow-lg w-1/4 mx-auto'>
+                <img src={coffee.image} alt={coffee.name} className='w-60 h-40 rounded mb-4' />
+                <h1 className='font-bold text-white'>{coffee.name}</h1>
+                <p className='mt-4 text-white'>Price: R${coffee.price}</p>
+                <p className='mt-2'>Description: {coffee.description || 'Coffee is a greate coffeee '}</p>
             </div>
         </div>
 

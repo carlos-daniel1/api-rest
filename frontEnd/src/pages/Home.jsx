@@ -1,35 +1,35 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import GetCoffee from '../components/GetCoffee';
 import NavBar from '../components/NavBar';
 import Modal from '../components/Modal';
+import httpservice from '../services/httpServices';
 
 const Home = () => {
     const [openModal, setOpenModal] = useState(false);
     const [coffees, setCoffees] = useState([
-        {
-            id: 1,
-            name: 'express coffee',
-            price: 2.4
-        },
-        {
-            id: 2,
-            name: 'chocolate coffee',
-            price: 6
-        },
-        {
-            id: 3,
-            name: 'gelatto coffee',
-            price: 10
-        },
-        {
-            id: 4,
-            name: 'coffe',
-            price: 2.9
-        },
-        
-
+        { id: 1, name: 'American Coffee', price: 5.00, image: 'src/assets/coffee1.webp' },
+        { id: 2, name: 'Coffee Latte', price: 6.50, image: 'src/assets/coffee2.webp' },
+        { id: 3, name: 'Cappuccino', price: 7.00, image: 'src/assets/coffee3.webp' },
+        { id: 4, name: 'Expresso', price: 4.50, image: 'src/assets/coffee4.webp' },
+        { id: 5, name: 'Macchiato', price: 6.00, image: 'src/assets/coffee5.webp' },
     ]);
+
+
+    useEffect(() => {
+        const getCoffees = async () => {
+            try{
+                const response = await httpservice.getProducts();
+                const data = await response.json()
+                
+
+            } catch(err) {
+                console.log(err);
+            }
+        }
+
+        getCoffees();
+    }, []);
 
 
     return (
