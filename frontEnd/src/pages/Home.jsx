@@ -11,12 +11,17 @@ const Home = () => {
 
 
     useEffect(() => {
+        if(coffees.length === 0) {
+            setCoffees({name: 'express coffee', price: 5, image: 'src/assets/coffee1'})
+        }
+
         const getCoffees = async () => {
             try {
                 const response = await httpservice.getProducts();
                 const data = await response.json()
                 setCoffees(data)
             } catch (err) {
+                alert('Erro ao carregar os produtos')
                 console.log(err);
             }
         }
