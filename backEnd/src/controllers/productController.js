@@ -76,7 +76,7 @@ const productController = {
                 image: req.body.image,
                 price: req.body.price,
                 description: req.body.description,
-                discounted: req.body.discounted
+                discounted: 0
             };
 
             const updateProduct = await productModel.findOneAndUpdate({ productID: id }, product);

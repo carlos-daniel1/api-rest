@@ -92,7 +92,34 @@ const httpservice = {
             body: JSON.stringify(newProduct),
         })
 
+    },
+
+    updateProduct: (productID, newProduct) => {
+        const SERVER_URL = `http://${IP}:${PORT}${PRODUCT_RESOURCE}/${productID}`;
+        return fetch(SERVER_URL, {
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
+            },
+            body: JSON.stringify(newProduct),
+        })
+
+    },
+
+    deleteProduct: (productID) => {
+        const SERVER_URL = `http://${IP}:${PORT}${PRODUCT_RESOURCE}/${productID}`;
+        return fetch(SERVER_URL, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
+            }
+        })
+
     }
+
+
 
 
 }
