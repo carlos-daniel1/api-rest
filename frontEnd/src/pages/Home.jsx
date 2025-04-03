@@ -8,6 +8,8 @@ import httpservice from '../services/httpServices';
 const Home = () => {
     const [openModal, setOpenModal] = useState(false);
     const [coffees, setCoffees] = useState([]);
+    const [name, setName] = useState('');
+    const [price, setPrice] = useState(0)
 
 
     useEffect(() => {
@@ -58,7 +60,15 @@ const Home = () => {
                 +
             </button>
 
-            <Modal isOpen={openModal} closeModal={() => setOpenModal(false)} addCoffee={addCoffee} />
+            <Modal isOpen={openModal} closeModal={() => setOpenModal(false)}>
+                <div className='flex flex-col gap-6 mt-5'>
+                    <h2 className='mt-6 text-center text-white text-2xl font-bold'>Adicionar Café</h2>
+                    <input value={name} onChange={(event) => setName(event.target.value)} type="text" placeholder='Nome do café' className='border-1 p-2 rounded-lg text-white' />
+                    <input value={price} onChange={(event) => setPrice(event.target.value)} type="number" placeholder='Preço do café' className='border-1 p-2 rounded-lg text-white' />
+
+                    <button onClick={() => addCoffee(name, price)} className='bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded-lg shadow-lg transition-colors duration-300 cursor-pointer'>Adicionar</button>
+                </div>
+            </Modal>
 
         </div>
 

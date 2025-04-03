@@ -14,6 +14,11 @@ const CoffeePage = () => {
                 <h1 className='font-bold text-white'>{coffee.name}</h1>
                 <p className='mt-4 text-white'>Price: R${coffee.price}</p>
                 <p className='mt-2'>Description: {coffee.description || 'Coffee is a greate coffeee '}</p>
+
+            <div className='flex w-full justify-between mt-8 px-10'>
+                <button className='bg-[rgb(100,58,58)] hover:bg-[rgb(58,35,35)] cursor-pointer p-2 rounded-md text-white font-medium'>Editar</button>
+                <button className='bg-red-600 hover:bg-red-700 cursor-pointer p-2 rounded-md text-white font-medium'>Excluir</button>
+            </div>
             </div>
         </div>
 
