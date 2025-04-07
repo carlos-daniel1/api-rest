@@ -2,10 +2,11 @@ const IP = "127.0.0.1"
 const PORT = "3000"
 const USER_RESOURCE = "/api/user"
 const PRODUCT_RESOURCE = "/api/product"
-
-const token = import.meta.env.VITE_TOKEN;
 import Cookies from "js-cookie";
-//const token = Cookies.get("token");
+
+const token = Cookies.get("token");
+console.log(token)
+
 const httpservice = {
     login: (data) => {
         const SERVER_URL = `http://${IP}:${PORT}${USER_RESOURCE}/login`
@@ -38,8 +39,7 @@ const httpservice = {
         return fetch(SERVER_URL, {
             method: 'POST',
             headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
             },
             body: JSON.stringify(newUser),
         });
@@ -75,7 +75,7 @@ const httpservice = {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`, // Inclua o token, se necessário
+                "Authorization": `Bearer ${token}`, 
             },
         });
     },

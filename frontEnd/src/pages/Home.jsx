@@ -37,7 +37,6 @@ const Home = () => {
         try {
             const response = await httpservice.createProduct(newCoffe);
             const data = await response.json()
-            console.log(data.response)
             setCoffees([...coffees, data.response])
             setName('')
             setPrice(0)
