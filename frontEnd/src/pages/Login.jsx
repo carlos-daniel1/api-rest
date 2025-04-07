@@ -50,23 +50,23 @@ const LoginScreen = () => {
     return (
         <div className="flex h-screen">
             <div className="w-1/2 bg-cover" style={{backgroundImage: "url('https://img.freepik.com/fotos-premium/dia-internacional-do-cafe-4k-e-arte-incrivel_433229-35.jpg')",}}></div>
-            <div className="w-1/2 flex flex-col items-center justify-center bg-gray-100 p-8">
+            <div className="w-1/2 flex flex-col items-center justify-center bg-[#F5EBDD] p-8">
                 <div className="text-center mb-6">
                     <img className="mx-auto h-30 w-35" src="https://www.svgrepo.com/show/373517/coffeescript.svg" alt="Coffe Script"/>
-                    <h2 className="mt-2 text-2xl font-bold tracking-tight text-[#6f4e37]">Coffe Script</h2>
+                    <h2 className="mt-2 text-2xl font-bold tracking-tight text-[#4B2E2B]">Coffe Script</h2>
                 </div>
                 <div className="bg-white p-8 rounded-lg shadow-lg w-[400px] text-center">
-                    <h2 className="text-2xl font-bold mb-4">Login</h2>
+                    <h2 className="text-2xl font-bold mb-4 text-[#4B2E2B]">Login</h2>
                     <form>
                         <div className="mb-4 text-left">
-                            <label className="block text-gray-700">Email</label>
+                            <label className="block text-[#4B2E2B]">Email</label>
                             <input type="email" className="w-full p-2 border border-gray-300 rounded mt-1" placeholder="Digite seu email"
                             value={email.value}
                             onChange={(event) => setEmail({ value: event.target.value, dirty: true })}/>
                             {handleErrorEmail()}
                         </div>
                         <div className="mb-4 text-left">
-                            <label className="block text-gray-700">Senha</label>
+                            <label className="block text-[#4B2E2B]">Senha</label>
                             <input type="password" className="w-full p-2 border border-gray-300 rounded mt-1" placeholder="Digite sua senha"
                             value={password.value}
                             onChange={(event) => setPassword({ value: event.target.value, dirty: true })}/>

@@ -5,30 +5,30 @@ const Register = () => {
   const navigate = useNavigate();
   return (
     <div className="flex h-screen">
-            <div className="w-1/2 bg-cover bg-center" style={{backgroundImage: "url('https://img.freepik.com/fotos-premium/papel-de-parede-de-cafe-4k_937960-19.jpg')",}}></div>
-            <div className="w-1/2 flex flex-col items-center justify-center bg-gray-100 p-8">
-                <div className="text-center mb-6">
-                    <img className="mx-auto h-30 w-35" src="https://www.svgrepo.com/show/373517/coffeescript.svg" alt="Coffe Script"/>
-                    <h2 className="mt-2 text-2xl font-bold tracking-tight text-[#6f4e37]">Coffe Script</h2>
-                </div>
+            <div className="w-1/2 bg-cover" style={{backgroundImage: "url('https://img.freepik.com/fotos-premium/dia-internacional-do-cafe-4k-e-arte-incrivel_433229-35.jpg')",}}></div>
+            <div className="w-1/2 flex flex-col items-center justify-center bg-[#F5EBDD] p-8">
                 <div className="bg-white p-8 rounded-lg shadow-lg w-[400px] text-center">
-                    <h2 className="text-2xl font-bold mb-4">Registrar</h2>
+                    <h2 className="text-2xl font-bold mb-4 text-[#4B2E2B]">Registrar</h2>
                     <form>
                         <div className="mb-4 text-left">
-                            <label className="block text-gray-700">Nome</label>
+                            <label className="block text-[#4B2E2B]">Nome</label>
                             <input type="text" className="w-full p-2 border border-gray-300 rounded mt-1" placeholder="Digite seu nome"/>
                         </div>
                         <div className="mb-4 text-left">
-                            <label className="block text-gray-700">Telefone</label>
-                            <input type="tel" className="w-full p-2 border border-gray-300 rounded mt-1" placeholder="Digite seu Telefone"/>
+                            <label className="block text-[#4B2E2B]">CPF</label>
+                            <input type="text" className="w-full p-2 border border-gray-300 rounded mt-1" placeholder="Digite seu CPF"/>
                         </div>
                         <div className="mb-4 text-left">
-                            <label className="block text-gray-700">Email</label>
+                            <label className="block text-[#4B2E2B]">Email</label>
                             <input type="email" className="w-full p-2 border border-gray-300 rounded mt-1" placeholder="Digite seu email"/>
                         </div>
                         <div className="mb-4 text-left">
-                            <label className="block text-gray-700">Senha</label>
-                            <input type="password" className="w-full p-2 border border-gray-300 rounded mt-1" placeholder="Digite sua senha"/>
+                            <label className="block text-[#4B2E2B]">Senha</label>
+                            <input type="password" className="w-full p-2 border border-gray-300 rounded mt-1" placeholder="Crie uma senha"/>
+                        </div>
+                        <div className="mb-4 text-left">
+                            <label className="block text-[#4B2E2B]">Imagem</label>
+                            <input type="password" className="w-full p-2 border border-gray-300 rounded mt-1" placeholder="Coloque o link da imagem"/>
                         </div>
                         <button type="button" className="w-full bg-[#6f4e37] text-white p-2 rounded hover:bg-[#826450] transition" onClick={() => navigate("/")}>Enviar</button>
                     </form>
