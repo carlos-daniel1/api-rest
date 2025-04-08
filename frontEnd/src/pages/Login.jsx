@@ -67,7 +67,7 @@ const LoginScreen = () => {
   return (
     <div className="flex h-screen">
       <div className="w-1/2 bg-cover" style={{ backgroundImage: "url('https://img.freepik.com/fotos-premium/dia-internacional-do-cafe-4k-e-arte-incrivel_433229-35.jpg')", }}></div>
-      <div className="w-1/2 flex flex-col items-center justify-center bg-[#F5EBDD] p-8">
+      <div className="w-1/2 flex flex-col items-center justify-center bg-[#DCC9A6] p-8">
         <div className="text-center mb-6">
           <img className="mx-auto h-30 w-35" src="https://www.svgrepo.com/show/373517/coffeescript.svg" alt="Coffe Script" />
           <h2 className="mt-2 text-2xl font-bold tracking-tight text-[#4B2E2B]">Coffe Script</h2>

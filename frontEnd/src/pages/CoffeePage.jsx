@@ -49,13 +49,13 @@ const CoffeePage = () => {
     }
 
     return (
-        <div className='bg-[rgb(56,56,61)] h-screen'>
+        <div className='bg-[#DCC9A6] h-screen'>
             <Navbar />
-            <div className='mt-10 flex flex-col items-center bg-amber-600 py-4 rounded-lg shadow-lg w-1/4 mx-auto'>
+            <div className='mt-10 flex flex-col items-center bg-[#4B2E2B] py-4 rounded-lg shadow-lg w-1/4 mx-auto'>
                 <img src={coffee.image} alt={coffee.name} className='w-60 h-40 rounded mb-4' />
                 <h1 className='font-bold text-white'>{coffee.name}</h1>
                 <p className='mt-4 text-white'>Price: R${coffee.price}</p>
-                <p className='mt-2'>Description: {coffee.description || 'Coffee is a greate coffeee '}</p>
+                <p className='mt-2 text-white'>Description: {coffee.description || 'Coffee is a greate coffeee '}</p>
 
             <Modal isOpen={openModalEdit} closeModal={() => setOpenModalEdit(false)} > 
             <div className='flex flex-col gap-4'>
@@ -69,15 +69,15 @@ const CoffeePage = () => {
 
                     <input value={image} onChange={(event) => setImage(event.target.value)} type="text" placeholder='Image' className='border-1 p-2 rounded-lg text-white' />
 
-                    <button onClick={editCoffee} className='bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded-lg shadow-lg transition-colors duration-300 cursor-pointer'>Edit</button>
+                    <button onClick={editCoffee} className='bg-[#B19777] hover:bg-[#897051] text-white font-bold py-2 px-4 rounded-lg shadow-lg transition-colors duration-300 cursor-pointer'>Edit</button>
                 </div>
             </Modal>
 
 
                 <div className='flex w-full justify-between mt-8 px-10'>
-                    <button onClick={() => setOpenModalEdit(true)} className='bg-[rgb(100,58,58)] hover:bg-[rgb(58,35,35)] cursor-pointer p-2 rounded-md text-white font-medium'>Editar</button>
+                    <button onClick={() => setOpenModalEdit(true)} className='bg-[#B19777] hover:bg-[#897051] cursor-pointer p-2 rounded-md text-white font-medium transition-colors duration-300'>Editar</button>
                     
-                    <button onClick={deleteCoffee} className='bg-red-600 hover:bg-red-700 cursor-pointer p-2 rounded-md text-white font-medium'>Excluir</button>
+                    <button onClick={deleteCoffee} className='bg-red-600 hover:bg-red-700 cursor-pointer p-2 rounded-md text-white font-medium transition-colors duration-300'>Excluir</button>
                 </div>
             </div>
         </div>
