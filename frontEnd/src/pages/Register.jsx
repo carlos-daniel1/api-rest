@@ -72,7 +72,7 @@ const Register = () => {
     return (
         <div className="flex h-screen">
             <div className="w-1/2 bg-cover" style={{ backgroundImage: "url('https://img.freepik.com/fotos-premium/dia-internacional-do-cafe-4k-e-arte-incrivel_433229-35.jpg')", }}></div>
-            <div className="w-1/2 flex flex-col items-center justify-center bg-[#F5EBDD] p-8">
+            <div className="w-1/2 flex flex-col items-center justify-center bg-[#DCC9A6] p-8">
                 <div className="bg-white p-8 rounded-lg shadow-lg w-[400px] text-center">
                     <h2 className="text-2xl font-bold mb-4 text-[#4B2E2B]">Registrar</h2>
                     <form>
@@ -104,7 +104,7 @@ const Register = () => {
                         </div>
                         <div className="mb-4 text-left">
                             <label className="block text-[#4B2E2B]">Imagem</label>
-                            <input type="password" className="w-full p-2 border border-gray-300 rounded mt-1" placeholder="Coloque o link da imagem"
+                            <input type="text" className="w-full p-2 border border-gray-300 rounded mt-1" placeholder="Coloque o link da imagem"
                                 value={image.value}
                                 onChange={(event) => setImage({ value: event.target.value, dirty: true })} />
                         </div>

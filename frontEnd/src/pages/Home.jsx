@@ -51,12 +51,12 @@ const Home = () => {
 
 
     return (
-        <div className='bg-[rgb(56,56,61)] min-h-screen'>
+        <div className='bg-[#DCC9A6] min-h-screen'>
             <NavBar />
             <GetCoffee coffees={coffees} />
             <button
                 onClick={() => setOpenModal(true)}
-                className='fixed right-10 cursor-pointer bottom-15 bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded-3xl shadow-lg transition-colors duration-300'
+                className='fixed right-10 cursor-pointer bottom-15 bg-[#4B2E2B] hover:bg-[#1c0908] text-white font-bold py-2 px-4 rounded-3xl shadow-lg transition-colors duration-300'
             >
                 +
             </button>
@@ -67,7 +67,7 @@ const Home = () => {
                     <input value={name} onChange={(event) => setName(event.target.value)} type="text" placeholder='Coffee name' className='border-1 p-2 rounded-lg text-white' />
                     <input value={price} onChange={(event) => setPrice(event.target.value)} type="number" placeholder='Price' className='border-1 p-2 rounded-lg text-white' />
 
-                    <button onClick={() => addCoffee(name, price)} className='bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded-lg shadow-lg transition-colors duration-300 cursor-pointer'>Add</button>
+                    <button onClick={() => addCoffee(name, price)} className='bg-[#B19777] hover:bg-[#897051] text-white font-bold py-2 px-4 rounded-lg shadow-lg transition-colors duration-300 cursor-pointer'>Add</button>
                 </div>
             </Modal>
 
