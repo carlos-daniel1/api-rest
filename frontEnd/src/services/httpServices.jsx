@@ -1,11 +1,13 @@
-const IP = "127.0.0.1"
-const PORT = "3000"
-const USER_RESOURCE = "/api/user"
-const PRODUCT_RESOURCE = "/api/product"
 import Cookies from "js-cookie";
 
+const IP = import.meta.env.VITE_BACKEND_IP
+const PORT = 80
+const USER_RESOURCE = "/api/user"
+const PRODUCT_RESOURCE = "/api/product"
+
+
+
 const token = Cookies.get("token");
-console.log(token)
 
 const httpservice = {
     login: (data) => {
@@ -21,7 +23,7 @@ const httpservice = {
     },
     getUsers: () => {
         const SERVER_URL = `http://${IP}:${PORT}${USER_RESOURCE}`
-        console.log(token);
+        
         return fetch(SERVER_URL, {
             method: 'GET',
             headers: {
@@ -35,7 +37,7 @@ const httpservice = {
     },
 
     createUser: (newUser) => {
-        const SERVER_URL = `http://${IP}:${PORT}${USER_RESOURCE}`;
+        const SERVER_URL = `http://${IP}:${PORT}${USER_RESOURCE}`;      
         return fetch(SERVER_URL, {
             method: 'POST',
             headers: {
