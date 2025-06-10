@@ -6,9 +6,6 @@ const USER_RESOURCE = "/api/user"
 const PRODUCT_RESOURCE = "/api/product"
 
 
-
-const token = Cookies.get("token");
-
 const httpservice = {
     login: (data) => {
         const SERVER_URL = `http://${IP}:${PORT}${USER_RESOURCE}/login`
@@ -28,7 +25,7 @@ const httpservice = {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
+                "Authorization": `Bearer ${Cookies.get("token")}`
             }
 
 
@@ -53,7 +50,7 @@ const httpservice = {
             method: 'PUT',
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`,
+                "Authorization": `Bearer ${Cookies.get("token")}`,
             },
             body: JSON.stringify(user),
         });
@@ -65,7 +62,7 @@ const httpservice = {
             method: 'DELETE',
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`,
+                "Authorization": `Bearer ${Cookies.get("token")}`,
             },
         });
     },
@@ -77,7 +74,7 @@ const httpservice = {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`, 
+                "Authorization": `Bearer ${Cookies.get("token")}`, 
             },
         });
     },
@@ -89,7 +86,7 @@ const httpservice = {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`,
+                "Authorization": `Bearer ${Cookies.get("token")}`,
             },
             body: JSON.stringify(newProduct),
         })
@@ -102,7 +99,7 @@ const httpservice = {
             method: 'PUT',
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`,
+                "Authorization": `Bearer ${Cookies.get("token")}`,
             },
             body: JSON.stringify(newProduct),
         })
@@ -115,7 +112,7 @@ const httpservice = {
             method: 'DELETE',
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`,
+                "Authorization": `Bearer ${Cookies.get("token")}`,
             }
         })
 
